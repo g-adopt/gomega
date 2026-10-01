@@ -10,13 +10,31 @@ field data onto the result.
 
 ## Installation
 
+OMEGA needs Python 3.11 or later and Firedrake. Firedrake is not on PyPI, so pip
+cannot install it as a dependency of OMEGA. Install Firedrake first, with the
+[Firedrake install instructions](https://www.firedrakeproject.org/install.html)
+or the [G-ADOPT install instructions](https://gadopt.org/install/).
+
+Activate the Firedrake virtual environment. Then clone OMEGA and install it into
+that environment:
+
 ```bash
-pip install -e .
+git clone https://github.com/g-adopt/omega.git
+cd omega
+pip install -e ".[dev]"
 ```
 
-OMEGA needs `numpy`, `scipy`, `shapely`, `gmsh` and `firedrake`. Install it into
-the same environment as Firedrake, because the mesh and field code imports
-Firedrake directly.
+The `dev` extra adds pytest and ruff. Pip installs the other dependencies:
+`numpy`, `scipy`, `shapely`, `gmsh`, `ausdem` and `austrata`.
+
+On Linux, the `gmsh` wheel needs the X11 and OpenGL system libraries. If
+`import gmsh` fails, install the system gmsh package (`apt install gmsh` on
+Debian and Ubuntu), which pulls in these libraries.
+
+Without Firedrake, the install succeeds and `import omega` works. The polygon,
+surface and stratigraphy code runs. The functions that make or use Firedrake
+meshes raise `ImportError` when you call them: `SurfaceMesh.to_firedrake_mesh`,
+`build_mesh_hierarchy`, `assign_field` and the writers in `omega.io`.
 
 ## The one currency: a Surface
 
