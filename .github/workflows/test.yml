@@ -17,11 +17,19 @@ env:
 jobs:
   test:
     name: Run Tests
-    runs-on: self-hosted
+    # The suite runs in seconds, so a GitHub-hosted runner is enough. This
+    # matches the smoke test in g-adopt/g-adopt. A hosted runner also keeps
+    # pull requests from forks off the self-hosted machines of the
+    # organisation, which matters because this repository is public.
+    runs-on: ubuntu-latest
     container:
       image: firedrakeproject/firedrake-vanilla-default:latest
 
     steps:
+      # The Python gmsh module comes from the pip wheel (a dependency in
+      # pyproject.toml). The wheel links against X11 and OpenGL libraries that
+      # the Firedrake image does not have. The Debian gmsh package pulls in all
+      # of them.
       - name: Install system dependencies
         run: |
           apt-get update
@@ -30,15 +38,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          # No lock file exists, so a cache key cannot be computed.
+          enable-cache: false
+
+      # The image installs Firedrake as a system package, with no virtual
+      # environment to activate. A venv with --system-site-packages sees that
+      # Firedrake and keeps the omega install apart from the system Python.
       - name: Set up Python environment
         run: |
-          . /home/firedrake/firedrake/bin/activate
-          python -m pip install --upgrade pip
-          pip install .[dev]
+          uv venv --system-site-packages
+          uv pip install ".[dev]"
 
       - name: Run tests
         run: |
-          . /home/firedrake/firedrake/bin/activate
+          . .venv/bin/activate
           python -m pytest tests/ -v --tb=short --junit-xml=test-results.xml
 
       - name: Upload test results
