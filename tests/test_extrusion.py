@@ -1,9 +1,9 @@
-"""Tests for omega.mesh.extrusion module."""
+"""Tests for gomega.mesh.extrusion module."""
 
 import numpy as np
 import pytest
 
-from omega.mesh.extrusion import ExtrusionConfig
+from gomega.mesh.extrusion import ExtrusionConfig
 
 
 class TestExtrusionConfig:

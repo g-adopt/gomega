@@ -1,4 +1,4 @@
-"""Tests for omega.fields.surfaces.GridSurface.
+"""Tests for gomega.fields.surfaces.GridSurface.
 
 The point of GridSurface is that it is the *same* interpolation the array-based
 build_mesh_hierarchy used before the Surface refactor, wrapped in the Surface
@@ -12,8 +12,8 @@ import numpy as np
 import pytest
 from scipy.interpolate import griddata
 
-from omega.exceptions import InterpolationError
-from omega.fields.surfaces import GaussianKernelSurface, GridSurface, Surface
+from gomega.exceptions import InterpolationError
+from gomega.fields.surfaces import GaussianKernelSurface, GridSurface, Surface
 
 
 def _grid(n=21, span=1000.0):

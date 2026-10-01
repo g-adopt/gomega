@@ -1,10 +1,10 @@
-"""Tests for omega.fields.surfaces (the GaussianKernelSurface primitive)."""
+"""Tests for gomega.fields.surfaces (the GaussianKernelSurface primitive)."""
 
 import numpy as np
 import pytest
 
-from omega.exceptions import InterpolationError
-from omega.fields.surfaces import (
+from gomega.exceptions import InterpolationError
+from gomega.fields.surfaces import (
     GaussianKernelSurface,
     Surface,
     clamp_monotonic,
@@ -141,7 +141,7 @@ class TestGaussianKernelSurface:
     def test_rho_chunking_matches_unchunked(self, monkeypatch):
         # The density (rho) self-query is chunked at construction; forcing a small
         # chunk must not change results vs a single-pass build.
-        import omega.fields.surfaces as surfaces_mod
+        import gomega.fields.surfaces as surfaces_mod
 
         coords = _grid(n=20, span=100.0)
         values = np.sin(coords[:, 0] / 10.0)

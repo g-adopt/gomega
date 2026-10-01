@@ -40,7 +40,7 @@ from collections.abc import Callable
 import numpy as np
 from scipy.spatial import cKDTree
 
-from omega.exceptions import InterpolationError
+from gomega.exceptions import InterpolationError
 
 #: Default neighbour count. Adequate for sparse borehole picks (it is clamped to
 #: the pick count, so a layer with few bores uses them all). Dense sources whose
@@ -129,7 +129,7 @@ class GaussianKernelSurface(Surface):
 
     * a weighted mean is bounded by its inputs and cannot reproduce an affine trend
       from few points, so genuine slopes are under-extrapolated where control is
-      sparse (use :class:`~omega.fields.interpolation.FieldInterpolator.idw` if a
+      sparse (use :class:`~gomega.fields.interpolation.FieldInterpolator.idw` if a
       slope-tracking surface is needed there);
     * declustering works only *within the k-NN window*. A cluster of co-located
       bores larger than ``k`` swallows the whole neighbour list, so a lone control

@@ -10,7 +10,7 @@ model that can be queried anywhere in 3D:
   elevation, and its label. Coordinates and elevations share whatever frame the
   caller supplies (e.g. local metres + m AHD); projection is not done here.
 * :class:`LayerModel` holds, per layer, a top and a bottom boundary
-  :class:`~omega.fields.surfaces.Surface` (always in elevation), then classifies
+  :class:`~gomega.fields.surfaces.Surface` (always in elevation), then classifies
   any 3D point into a layer and maps layers to values. It has two constructors:
   :meth:`LayerModel.__init__` fits the boundaries from elevation picks, while
   :meth:`LayerModel.from_depths` builds them from a top surface plus depth-below-
@@ -30,7 +30,7 @@ from typing import Literal
 
 import numpy as np
 
-from omega.fields.surfaces import DEFAULT_K, GaussianKernelSurface, Surface
+from gomega.fields.surfaces import DEFAULT_K, GaussianKernelSurface, Surface
 
 
 class _ConstantSurface(Surface):
@@ -139,7 +139,7 @@ class LayerModel:
     """Continuous layered model: per-layer top and bottom elevation surfaces.
 
     Each layer carries a top and a bottom boundary
-    :class:`~omega.fields.surfaces.Surface`, always in elevation. A 3D point is
+    :class:`~gomega.fields.surfaces.Surface`, always in elevation. A 3D point is
     assigned to the first layer (in layer order, top to bottom) whose
     ``[bottom, top]`` band brackets its elevation; points above, below, or in a
     gap between bands are assigned to the nearest layer by vertical distance.

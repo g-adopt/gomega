@@ -56,8 +56,8 @@ def simple_surface_mesh(simple_polygon_coords):
 
     Returns a SurfaceMesh that has already been generated with resolution=20.
     """
-    from omega.geometry.polygon import Polygon
-    from omega.mesh.surface import SurfaceMesh
+    from gomega.geometry.polygon import Polygon
+    from gomega.mesh.surface import SurfaceMesh
 
     polygon = Polygon(simple_polygon_coords)
     sm = SurfaceMesh(polygon, resolution=20.0)

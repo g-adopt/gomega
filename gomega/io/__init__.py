@@ -1,7 +1,7 @@
 """I/O utilities for reading and writing data files."""
 
-from omega.io.readers import CSVReader, SpatialData, read_csv
-from omega.io.writers import (
+from gomega.io.readers import CSVReader, SpatialData, read_csv
+from gomega.io.writers import (
     load_function,
     load_mesh,
     save_function,

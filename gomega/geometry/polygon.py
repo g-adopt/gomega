@@ -8,7 +8,7 @@ import numpy as np
 from shapely.geometry import Polygon as ShapelyPolygon
 from shapely.validation import make_valid
 
-from omega.exceptions import PolygonError
+from gomega.exceptions import PolygonError
 
 
 class Polygon:

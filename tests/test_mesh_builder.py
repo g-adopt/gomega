@@ -1,4 +1,4 @@
-"""Tests for omega.mesh.builder module.
+"""Tests for gomega.mesh.builder module.
 
 These tests require Firedrake to be installed. They exercise the
 build_mesh_hierarchy() function and the SurfaceMesh.to_firedrake_mesh()
@@ -8,15 +8,15 @@ method for end-to-end mesh generation with terrain-following transforms.
 import numpy as np
 import pytest
 
-from omega.exceptions import MeshGenerationError
-from omega.fields.surfaces import GaussianKernelSurface, Surface
-from omega.geometry.polygon import Polygon
-from omega.mesh.surface import SurfaceMesh
+from gomega.exceptions import MeshGenerationError
+from gomega.fields.surfaces import GaussianKernelSurface, Surface
+from gomega.geometry.polygon import Polygon
+from gomega.mesh.surface import SurfaceMesh
 
 # Skip entire module if Firedrake is not available
 firedrake = pytest.importorskip("firedrake")
 
-from omega.mesh.builder import build_mesh_hierarchy  # noqa: E402
+from gomega.mesh.builder import build_mesh_hierarchy  # noqa: E402
 
 
 class _PlaneSurface(Surface):
@@ -267,7 +267,7 @@ class TestLegacyGriddataEquivalence:
     def test_grid_surface_matches_legacy_sampling_on_the_mesh_nodes(
         self, simple_mesh_2d, terrain_arrays
     ):
-        from omega.fields.surfaces import GridSurface
+        from gomega.fields.surfaces import GridSurface
 
         coords, elevation, thickness = terrain_arrays
         xy = simple_mesh_2d.coordinates.dat.data_ro[:, :2]
@@ -287,7 +287,7 @@ class TestLegacyGriddataEquivalence:
         # Sample on the coarse nodes, then apply z = thk*z + top - thk, which is
         # what the legacy builder did before prolonging. With refinement_levels=0
         # there is no prolongation, so the whole legacy path is reproduced here.
-        from omega.fields.surfaces import GridSurface
+        from gomega.fields.surfaces import GridSurface
 
         coords, elevation, thickness = terrain_arrays
         hierarchy = build_mesh_hierarchy(
@@ -315,7 +315,7 @@ class TestLegacyGriddataEquivalence:
         # The nearest backfill is the reason the legacy path never produced NaN
         # geometry. A GridSurface must inherit that, or a mesh whose polygon
         # escapes its terrain grid gets NaN coordinates instead of flat steps.
-        from omega.fields.surfaces import GridSurface
+        from gomega.fields.surfaces import GridSurface
 
         polygon = Polygon(simple_polygon_coords)
         sm = SurfaceMesh(polygon, resolution=20.0)
@@ -381,7 +381,7 @@ class TestCollectiveTerrainCheck:
         # The regression: np.min has no identity, so a rank owning no coarse
         # nodes used to abort the whole job with "zero-size array to reduction
         # operation minimum". Only shows up in parallel, on enough ranks.
-        from omega.mesh.builder import _collective_terrain_check
+        from gomega.mesh.builder import _collective_terrain_check
 
         comm = self._FakeComm([[None, None], [float("inf"), 42.0]])
         failure, min_thk = _collective_terrain_check(
@@ -391,7 +391,7 @@ class TestCollectiveTerrainCheck:
         assert min_thk == 42.0
 
     def test_all_ranks_empty_reports_no_minimum(self):
-        from omega.mesh.builder import _collective_terrain_check
+        from gomega.mesh.builder import _collective_terrain_check
 
         comm = self._FakeComm([[None], [float("inf")]])
         failure, min_thk = _collective_terrain_check(
@@ -403,7 +403,7 @@ class TestCollectiveTerrainCheck:
     def test_minimum_is_global_not_local(self):
         # A rank whose own nodes are all healthy must still see another rank's
         # collapsed column, or the warning fires on some ranks only.
-        from omega.mesh.builder import _collective_terrain_check
+        from gomega.mesh.builder import _collective_terrain_check
 
         comm = self._FakeComm([[None, None], [10.0, -3.0]])
         failure, min_thk = _collective_terrain_check(
@@ -415,7 +415,7 @@ class TestCollectiveTerrainCheck:
     def test_a_failure_on_any_rank_is_reported_everywhere(self):
         # This rank's own data is clean; another rank saw NaN. The helper must
         # still report a failure here so every rank raises together.
-        from omega.mesh.builder import _collective_terrain_check
+        from gomega.mesh.builder import _collective_terrain_check
 
         comm = self._FakeComm(
             [[None, "depth contains NaN or infinite values"], [10.0, 5.0]]
@@ -426,7 +426,7 @@ class TestCollectiveTerrainCheck:
         assert failure == "depth contains NaN or infinite values"
 
     def test_local_failure_is_detected(self):
-        from omega.mesh.builder import _collective_terrain_check
+        from gomega.mesh.builder import _collective_terrain_check
 
         message = "depth contains NaN or infinite values"
         # A NaN thickness reduces to a NaN minimum, which is never <= 0, so no

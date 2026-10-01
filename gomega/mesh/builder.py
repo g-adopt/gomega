@@ -1,7 +1,7 @@
 """Terrain-following extruded mesh hierarchy builder.
 
 Provides a single function, build_mesh_hierarchy(), that takes a 2D Firedrake
-mesh and two terrain :class:`~omega.fields.surfaces.Surface` objects (the top
+mesh and two terrain :class:`~gomega.fields.surfaces.Surface` objects (the top
 surface and the depth-to-bedrock thickness), then produces a terrain-following
 extruded mesh hierarchy suitable for multigrid solvers.
 """
@@ -10,8 +10,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from omega.exceptions import MeshGenerationError
-from omega.fields.surfaces import Surface
+from gomega.exceptions import MeshGenerationError
+from gomega.fields.surfaces import Surface
 
 
 def _collective_terrain_check(comm, top_values, thk_values):
@@ -35,7 +35,7 @@ def _collective_terrain_check(comm, top_values, thk_values):
         ``min_thickness`` is the global minimum thickness, or None when no rank
         owns any node.
     """
-    from omega.mesh.transform import validate_terrain_data
+    from gomega.mesh.transform import validate_terrain_data
 
     # np.any over an empty array is False, so a rank owning no nodes reports
     # valid, which is the right answer for a rank with nothing to object to.

@@ -1,10 +1,10 @@
-"""Tests for omega.geometry.polygon module."""
+"""Tests for gomega.geometry.polygon module."""
 
 import numpy as np
 import pytest
 
-from omega.exceptions import PolygonError
-from omega.geometry import Polygon
+from gomega.exceptions import PolygonError
+from gomega.geometry import Polygon
 
 
 class TestPolygon:

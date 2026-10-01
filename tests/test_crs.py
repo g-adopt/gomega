@@ -1,9 +1,9 @@
-"""Tests for omega.geometry.crs.LocalFrame."""
+"""Tests for gomega.geometry.crs.LocalFrame."""
 
 import numpy as np
 import pytest
 
-from omega.geometry.crs import LocalFrame
+from gomega.geometry.crs import LocalFrame
 
 # The Lower Murrumbidgee demo's frame.
 MURRUMBIDGEE = LocalFrame(143.01, -35.76, 91_800.0, 110_170.0)

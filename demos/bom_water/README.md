@@ -10,7 +10,7 @@ OMEGA groundwater simulation.
 discharge for a lat/lon bounding box (set to the Lower Murrumbidgee here),
 flattens the per-station xarray datasets into one `(lon, lat, value)` table,
 and writes it to CSV. Those columns feed straight into
-`omega.fields.FieldInterpolator` for mapping onto a mesh.
+`gomega.fields.FieldInterpolator` for mapping onto a mesh.
 
 ## Setup
 

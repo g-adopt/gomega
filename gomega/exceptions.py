@@ -2,7 +2,7 @@
 
 
 class OmegaError(Exception):
-    """Base exception for omega package."""
+    """Base exception for gomega package."""
 
     pass
 

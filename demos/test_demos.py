@@ -19,7 +19,7 @@ firedrake = pytest.importorskip("firedrake")
 class TestDemoPipeline:
     def _surfaces(self):
         """A DEM top surface and three crossing base-depth surfaces over a box."""
-        from omega import GaussianKernelSurface
+        from gomega import GaussianKernelSurface
 
         x = np.linspace(-50, 150, 12)
         xx, yy = np.meshgrid(x, x)
@@ -36,7 +36,7 @@ class TestDemoPipeline:
     def test_pipeline_builds_mesh_and_classifies(self):
         from firedrake import Function, FunctionSpace
 
-        from omega import (
+        from gomega import (
             LayerModel,
             Polygon,
             SurfaceMesh,
@@ -71,7 +71,7 @@ class TestDemoPipeline:
         assert set(np.unique(conductivity.dat.data_ro)).issubset(set(ks.values()))
 
     def test_top_of_mesh_follows_dem(self):
-        from omega import (
+        from gomega import (
             LayerModel,
             Polygon,
             SurfaceMesh,

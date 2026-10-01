@@ -7,7 +7,7 @@ from typing import Protocol
 
 import numpy as np
 
-from omega.exceptions import DataLoadError
+from gomega.exceptions import DataLoadError
 
 
 class SpatialData:

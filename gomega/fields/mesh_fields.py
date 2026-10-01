@@ -1,7 +1,7 @@
 """Bind numpy-valued fields onto Firedrake function spaces.
 
 This is the seam between OMEGA's pure-numpy field machinery (interpolators,
-:class:`~omega.fields.stratigraphy.LayerModel`) and Firedrake. A *valuator* is
+:class:`~gomega.fields.stratigraphy.LayerModel`) and Firedrake. A *valuator* is
 any callable that maps node coordinates -- shape ``(n_nodes, gdim)`` -- to a
 1-D array of values; :func:`assign_field` evaluates it at the nodes of a
 function space and returns a populated :class:`firedrake.Function`.
@@ -50,8 +50,8 @@ def assign_field(
         function_space: Scalar Firedrake ``FunctionSpace`` to populate.
         valuator: Callable mapping node coordinates ``(n_nodes, gdim)`` to a
             1-D array of ``n_nodes`` values. Examples:
-            :meth:`~omega.fields.stratigraphy.LayerModel.value_field`,
-            :class:`~omega.fields.interpolation.FieldInterpolator`.
+            :meth:`~gomega.fields.stratigraphy.LayerModel.value_field`,
+            :class:`~gomega.fields.interpolation.FieldInterpolator`.
         name: Optional name for the resulting ``Function``.
 
     Returns:

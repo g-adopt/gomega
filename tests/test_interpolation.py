@@ -1,10 +1,10 @@
-"""Tests for omega.fields.interpolation module."""
+"""Tests for gomega.fields.interpolation module."""
 
 import numpy as np
 import pytest
 
-from omega.exceptions import InterpolationError
-from omega.fields.interpolation import FieldInterpolator, interpolate_to_coords
+from gomega.exceptions import InterpolationError
+from gomega.fields.interpolation import FieldInterpolator, interpolate_to_coords
 
 
 class TestFieldInterpolator:
@@ -80,7 +80,7 @@ class TestFieldInterpolator:
 
     def test_from_spatial_data(self, sample_elevation_data):
         """Test creating interpolator from SpatialData."""
-        from omega.io.readers import SpatialData
+        from gomega.io.readers import SpatialData
 
         coords, values = sample_elevation_data
         data = SpatialData(coords, values, name="test")

@@ -10,17 +10,17 @@ with two external data sources:
                elevations to the DEM; the DEM owns the top and every layer is
                measured downward from it, which sidesteps any datum mismatch.
 
-Everything is one currency -- an :class:`omega.Surface` (a callable ``(x,y)->z``):
+Everything is one currency -- an :class:`gomega.Surface` (a callable ``(x,y)->z``):
 
-  * omega.LocalFrame          - the single lon/lat <-> local-metre georeference
-  * omega.GaussianKernelSurface - the one interpolation primitive (cKDTree k-NN,
+  * gomega.LocalFrame          - the single lon/lat <-> local-metre georeference
+  * gomega.GaussianKernelSurface - the one interpolation primitive (cKDTree k-NN,
                                 density-normalised). Fits the DEM AND each borehole
                                 depth surface from scattered points; no gridding.
-  * omega.SurfaceMesh         - 2D gmsh polygon mesh
-  * omega.build_mesh_hierarchy - terrain-following extrusion from two Surfaces
+  * gomega.SurfaceMesh         - 2D gmsh polygon mesh
+  * gomega.build_mesh_hierarchy - terrain-following extrusion from two Surfaces
                                 (top = DEM, thickness = depth to bedrock)
-  * omega.LayerModel.from_depths - depth-below-top layer model; classifies nodes
-  * omega.assign_field        - bind the classifier onto the Firedrake mesh
+  * gomega.LayerModel.from_depths - depth-below-top layer model; classifies nodes
+  * gomega.assign_field        - bind the classifier onto the Firedrake mesh
 
 Vertical model (depth d below the DEM surface), after the morrow2026 paper:
 
@@ -51,7 +51,7 @@ from austrata import NGISClient
 from firedrake import Function, FunctionSpace, VTKFile
 from matplotlib.path import Path as MplPath
 
-from omega import (
+from gomega import (
     GaussianKernelSurface,
     LayerModel,
     LocalFrame,
@@ -62,7 +62,7 @@ from omega import (
     clamp_monotonic,
     node_coordinates,
 )
-from omega.io import save_mesh_and_functions
+from gomega.io import save_mesh_and_functions
 
 HERE = Path(__file__).parent
 

@@ -16,7 +16,7 @@ def save_mesh(mesh, path: str | Path) -> None:
         path: Path for output HDF5 file (typically .h5 extension).
 
     Example:
-        >>> from omega.io import save_mesh, load_mesh
+        >>> from gomega.io import save_mesh, load_mesh
         >>> save_mesh(mesh, "output/mesh.h5")
         >>> # Later:
         >>> mesh = load_mesh("output/mesh.h5")

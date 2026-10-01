@@ -1,4 +1,4 @@
-"""Tests for omega.mesh.surface module.
+"""Tests for gomega.mesh.surface module.
 
 These tests exercise the SurfaceMesh class without requiring Firedrake.
 Only gmsh (available at PYTHONPATH=/opt/homebrew/lib) is needed.
@@ -11,9 +11,9 @@ import gmsh
 import numpy as np
 import pytest
 
-from omega.exceptions import MeshGenerationError
-from omega.geometry.polygon import Polygon
-from omega.mesh.surface import SurfaceMesh
+from gomega.exceptions import MeshGenerationError
+from gomega.geometry.polygon import Polygon
+from gomega.mesh.surface import SurfaceMesh
 
 
 class TestSurfaceMeshGenerate:

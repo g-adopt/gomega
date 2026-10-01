@@ -8,6 +8,10 @@ boundary as a polygon, a 2D triangular mesh from gmsh, a vertical extrusion that
 follows the topography and the basement, and the interpolation of scattered
 field data onto the result.
 
+The Python package is `gomega`, for G-ADOPT OMEGA. You install it as `gomega`
+and import it as `gomega`. The package `omega` on PyPI is a different,
+unrelated project.
+
 ## Installation
 
 OMEGA needs Python 3.11 or later and Firedrake. Firedrake is not on PyPI, so pip
@@ -19,8 +23,8 @@ Activate the Firedrake virtual environment. Then clone OMEGA and install it into
 that environment:
 
 ```bash
-git clone https://github.com/g-adopt/omega.git
-cd omega
+git clone https://github.com/g-adopt/gomega.git
+cd gomega
 pip install -e ".[dev]"
 ```
 
@@ -31,10 +35,10 @@ On Linux, the `gmsh` wheel needs the X11 and OpenGL system libraries. If
 `import gmsh` fails, install the system gmsh package (`apt install gmsh` on
 Debian and Ubuntu), which pulls in these libraries.
 
-Without Firedrake, the install succeeds and `import omega` works. The polygon,
+Without Firedrake, the install succeeds and `import gomega` works. The polygon,
 surface and stratigraphy code runs. The functions that make or use Firedrake
 meshes raise `ImportError` when you call them: `SurfaceMesh.to_firedrake_mesh`,
-`build_mesh_hierarchy`, `assign_field` and the writers in `omega.io`.
+`build_mesh_hierarchy`, `assign_field` and the writers in `gomega.io`.
 
 ## The one currency: a Surface
 
@@ -59,7 +63,7 @@ bedrock = top - thickness
 
 ```python
 from firedrake import FunctionSpace
-from omega import (
+from gomega import (
     Polygon, SurfaceMesh, build_mesh_hierarchy,
     GaussianKernelSurface, LayerModel, assign_field, LocalFrame,
 )
@@ -90,7 +94,7 @@ gridding step.
 ## Package layout
 
 ```
-omega/
+gomega/
 ├── geometry/
 │   ├── polygon.py       # Polygon loading, validation, simplification
 │   └── crs.py           # LocalFrame: lon/lat <-> local-metre affine frame

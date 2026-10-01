@@ -1,12 +1,12 @@
-"""Tests for omega.fields.stratigraphy and the mesh_fields seam."""
+"""Tests for gomega.fields.stratigraphy and the mesh_fields seam."""
 
 import importlib.util
 
 import numpy as np
 import pytest
 
-from omega.fields.stratigraphy import IntervalObservations, LayerModel
-from omega.fields.surfaces import Surface
+from gomega.fields.stratigraphy import IntervalObservations, LayerModel
+from gomega.fields.surfaces import Surface
 
 
 def _two_layer_observations():
@@ -283,7 +283,7 @@ class TestLayerModelFromDepths:
         # the raw Renmark depth while the classifier clamped the bands, the mesh
         # floor could sit above the Calivil base and leave zero Renmark cells.
         # Pre-clamping the depths monotone (as the demo does) keeps both consistent.
-        from omega.fields.surfaces import clamp_monotonic
+        from gomega.fields.surfaces import clamp_monotonic
 
         top = _Const(100.0)
         raw = [_Const(20.0), _Const(60.0), _Const(40.0)]  # renmark(40) < cal(60): crossing
@@ -369,7 +369,7 @@ class TestMeshFields:
     def test_node_coordinates_shape(self):
         from firedrake import FunctionSpace
 
-        from omega.fields.mesh_fields import node_coordinates
+        from gomega.fields.mesh_fields import node_coordinates
 
         mesh = self._extruded_unit_mesh()
         V = FunctionSpace(mesh, "CG", 1)
@@ -380,7 +380,7 @@ class TestMeshFields:
     def test_assign_field_matches_valuator(self):
         from firedrake import FunctionSpace
 
-        from omega.fields.mesh_fields import assign_field, node_coordinates
+        from gomega.fields.mesh_fields import assign_field, node_coordinates
 
         mesh = self._extruded_unit_mesh()
         V = FunctionSpace(mesh, "CG", 1)
@@ -395,7 +395,7 @@ class TestMeshFields:
     def test_assign_field_with_layer_model(self):
         from firedrake import FunctionSpace
 
-        from omega.fields.mesh_fields import assign_field
+        from gomega.fields.mesh_fields import assign_field
 
         mesh = self._extruded_unit_mesh()  # z in [0, 1]
         V = FunctionSpace(mesh, "CG", 1)
@@ -418,7 +418,7 @@ class TestMeshFields:
     def test_assign_field_wrong_length_raises(self):
         from firedrake import FunctionSpace
 
-        from omega.fields.mesh_fields import assign_field
+        from gomega.fields.mesh_fields import assign_field
 
         mesh = self._extruded_unit_mesh()
         V = FunctionSpace(mesh, "CG", 1)

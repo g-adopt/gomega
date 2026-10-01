@@ -10,10 +10,10 @@ from typing import TYPE_CHECKING
 import gmsh
 import numpy as np
 
-from omega.exceptions import MeshGenerationError
+from gomega.exceptions import MeshGenerationError
 
 if TYPE_CHECKING:
-    from omega.geometry.polygon import Polygon
+    from gomega.geometry.polygon import Polygon
 
 
 class SurfaceMesh:
@@ -28,7 +28,7 @@ class SurfaceMesh:
         resolution: Target element size in polygon coordinate units (e.g., meters).
 
     Example:
-        >>> from omega.geometry import Polygon
+        >>> from gomega.geometry import Polygon
         >>> polygon = Polygon([(0, 0), (100, 0), (100, 100), (0, 100)])
         >>> sm = SurfaceMesh(polygon, resolution=10.0)
         >>> sm.generate()

@@ -7,7 +7,7 @@ worked example behind the Murrumbidgee case study in the Richards/Morrow paper.
 
 Three packages cooperate. `ausdem` supplies the high-precision Geoscience
 Australia SRTM digital elevation model, `austrata` supplies the Bureau of
-Meteorology NGIS borehole stratigraphy, and `omega` does the meshing, the
+Meteorology NGIS borehole stratigraphy, and `gomega` does the meshing, the
 terrain-following extrusion, and the field assignment. Run it with the
 G-ADOPT / Firedrake interpreter:
 

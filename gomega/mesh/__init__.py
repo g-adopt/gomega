@@ -1,9 +1,9 @@
 """Mesh generation utilities."""
 
-from omega.mesh.builder import build_mesh_hierarchy
-from omega.mesh.extrusion import ExtrusionConfig
-from omega.mesh.surface import SurfaceMesh
-from omega.mesh.transform import (
+from gomega.mesh.builder import build_mesh_hierarchy
+from gomega.mesh.extrusion import ExtrusionConfig
+from gomega.mesh.surface import SurfaceMesh
+from gomega.mesh.transform import (
     apply_terrain_transform,
     apply_terrain_transform_inplace,
     validate_terrain_data,

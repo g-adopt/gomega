@@ -46,7 +46,7 @@ jobs:
 
       # The image installs Firedrake as a system package, with no virtual
       # environment to activate. A venv with --system-site-packages sees that
-      # Firedrake and keeps the omega install apart from the system Python.
+      # Firedrake and keeps the gomega install apart from the system Python.
       - name: Set up Python environment
         run: |
           uv venv --system-site-packages
@@ -83,4 +83,4 @@ jobs:
       # The demos are collected by pytest (testpaths covers them), so they are
       # part of the suite and get the same lint treatment as the package.
       - name: Run ruff
-        run: ruff check omega/ tests/ demos/
+        run: ruff check gomega/ tests/ demos/

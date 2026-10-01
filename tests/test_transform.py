@@ -1,9 +1,9 @@
-"""Tests for omega.mesh.transform module."""
+"""Tests for gomega.mesh.transform module."""
 
 import numpy as np
 import pytest
 
-from omega.mesh.transform import (
+from gomega.mesh.transform import (
     apply_terrain_transform,
     validate_terrain_data,
 )

@@ -81,7 +81,7 @@ def main():
 
     # Build a point table: one row per station with its coordinates and the
     # mean discharge over the period. This is the (x, y, value) form that
-    # omega.fields.FieldInterpolator consumes.
+    # gomega.fields.FieldInterpolator consumes.
     rows = []
     for url, ds in stations.items():
         # The discharge variable is the one column that is not Quality/Interpolation.
@@ -122,7 +122,7 @@ def main():
     table.to_csv(OUTPUT_CSV, index=False)
     print(f"\nWrote point table -> {OUTPUT_CSV}")
     print("Columns lon/lat/mean_discharge feed straight into "
-          "omega.fields.FieldInterpolator for mapping onto a mesh.")
+          "gomega.fields.FieldInterpolator for mapping onto a mesh.")
 
 
 if __name__ == "__main__":

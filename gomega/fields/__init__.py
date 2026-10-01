@@ -1,12 +1,12 @@
 """Field interpolation and layered-model utilities."""
 
-from omega.fields.interpolation import (
+from gomega.fields.interpolation import (
     FieldInterpolator,
     interpolate_to_coords,
 )
-from omega.fields.mesh_fields import assign_field, node_coordinates
-from omega.fields.stratigraphy import IntervalObservations, LayerModel
-from omega.fields.surfaces import (
+from gomega.fields.mesh_fields import assign_field, node_coordinates
+from gomega.fields.stratigraphy import IntervalObservations, LayerModel
+from gomega.fields.surfaces import (
     GaussianKernelSurface,
     GridSurface,
     Surface,

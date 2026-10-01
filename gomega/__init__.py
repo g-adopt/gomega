@@ -4,8 +4,8 @@ A utility package for generating extruded meshes and loading spatial data
 for the G-ADOPT groundwater module.
 
 Example:
-    >>> from omega import SurfaceMesh, build_mesh_hierarchy, GaussianKernelSurface
-    >>> from omega.geometry import Polygon
+    >>> from gomega import SurfaceMesh, build_mesh_hierarchy, GaussianKernelSurface
+    >>> from gomega.geometry import Polygon
     >>> polygon = Polygon([(0, 0), (280000, 0), (280000, 130000), (0, 130000)])
     >>> sm = SurfaceMesh(polygon, resolution=3500)
     >>> sm.generate()
@@ -17,14 +17,14 @@ Example:
     ... )
 """
 
-from omega.exceptions import (
+from gomega.exceptions import (
     DataLoadError,
     InterpolationError,
     MeshGenerationError,
     OmegaError,
     PolygonError,
 )
-from omega.fields import (
+from gomega.fields import (
     FieldInterpolator,
     GaussianKernelSurface,
     GridSurface,
@@ -35,8 +35,8 @@ from omega.fields import (
     clamp_monotonic,
     node_coordinates,
 )
-from omega.geometry import LocalFrame, Polygon
-from omega.mesh import ExtrusionConfig, SurfaceMesh, build_mesh_hierarchy
+from gomega.geometry import LocalFrame, Polygon
+from gomega.mesh import ExtrusionConfig, SurfaceMesh, build_mesh_hierarchy
 
 __version__ = "0.1.0"
 
