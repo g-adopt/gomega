@@ -15,6 +15,7 @@ authors:
     website: "https://sia-g.com"
 repository-code: "https://github.com/g-adopt/gomega"
 url: "https://github.com/g-adopt/gomega"
+doi: 10.5281/zenodo.23083131
 license: MIT
 version: 0.1.0
 date-released: "2026-10-01"
