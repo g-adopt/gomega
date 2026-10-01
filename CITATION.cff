@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use OMEGA (gomega) in your work, please cite it using these metadata."
+title: "OMEGA: Optimised Modelling of Environmental Groundwater in Australia, mesh generation for G-ADOPT"
+abstract: >-
+  OMEGA (Python package gomega) builds terrain-following extruded meshes for
+  groundwater simulation with G-ADOPT and Firedrake: a region boundary as a
+  polygon, a 2D triangular mesh from gmsh, a vertical extrusion that follows
+  the topography and the basement, and the interpolation of scattered field
+  data onto the result.
+type: software
+authors:
+  - family-names: Ghelichkhan
+    given-names: Sia
+    email: siavash.ghelichkhan@anu.edu.au
+    website: "https://sia-g.com"
+repository-code: "https://github.com/g-adopt/gomega"
+url: "https://github.com/g-adopt/gomega"
+license: MIT
+version: 0.1.0
+date-released: "2026-10-01"
+keywords:
+  - groundwater
+  - mesh
+  - firedrake
+  - g-adopt
+  - terrain-following
