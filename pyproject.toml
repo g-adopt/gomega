@@ -48,7 +48,7 @@ io = [
 ]
 
 [project.urls]
-Repository = "https://github.com/omega/omega"
+Repository = "https://github.com/g-adopt/omega"
 
 [tool.setuptools.packages.find]
 where = ["."]
